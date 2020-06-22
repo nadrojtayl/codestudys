@@ -74,8 +74,8 @@
 
     .master_tile{
       position: absolute;
-      top:0;
-      left:20%;
+      top:5%;
+      left:0%;
     }
 
 		.mydiv {
@@ -180,14 +180,14 @@ body{
 
 .coding_spacemaster{
      text-align: left;
-     width:500px;
+     width:1000px;
      height: 100px;
      white-space: pre-line;
 }
 
 .results_spacemaster{
      text-align: left;
-     width:500px;
+     width:1000px;
      height: 50px;
      white-space: pre-line;
      border-color: black;
@@ -261,18 +261,14 @@ body{
   
 
 
-   <article id = "pane_master" class="master_tile mydiv is-child notification is-danger">
+   <article style = "width:550px;" id = "pane_master" class="master_tile mydiv is-child notification is-danger">
     <div id = "pane_masterheader" class="mydivheader">Write your notes here, teacher</div>
     <div style = "display: flex;">
       <div>
-           <div >
-            <p id="coding_space_master" oninput = "run('master',this); rerender('coding_space_master');" style = "background-color: white; color:black;" class = "coding_spacemaster" contenteditable="true">
-                
-            </p>
-            <div class = "results_spacemaster"  id="results_space_master"  style = "background-color:white">
-            </div>
+          
+            <iframe height="200px" width="160%" src="https://repl.it/@JordanTaylor3/ProbableVigorousRuntimelibrary?lite=false" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
             
-          </div>
+         
             
         </div>
         
@@ -294,13 +290,7 @@ body{
     <div id = "pane_student1header" class="mydivheader">Write your notes here, student</div>
     <div style = "display: flex;">
       <div>
-           <div>
-              <p id="coding_space_student1" oninput = "run('student1',this);rerender('coding_space_student1');" style = "background-color: white; color:black;" class = "coding_space" contenteditable="true">
-                  
-              </p>
-              <div class = "results_space"  id="results_space_student1"  style = "background-color:white">
-              </div>
-            </div>
+           <iframe height="100px" width="30%" src="https://repl.it/@JordanTaylor3/ProbableVigorousRuntimelibrary?lite=false" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
             
         </div>

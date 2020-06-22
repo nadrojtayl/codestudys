@@ -201,7 +201,7 @@ body{
     <button onclick = "var room_name = prompt('What do you want to call your room?'); if(window.active_rooms !== undefined && window.active_rooms.indexOf(room_name) !== -1){alert('Room name taken'); return} window.socket.emit('create_room',{room_name:room_name}); window.room_name = room_name; $('#room_name_span').empty().text(window.room_name); $('#joined_count').empty().text(1)";> Create new room</button>
     <button onclick = "if(window.active_rooms === undefined || window.active_rooms.length === 0){alert('There are no active rooms'); return} alert('active rooms are ' + JSON.stringify(window.active_rooms)); var room_name = prompt('What room do you want to join?'); $('#room_name_span').empty().text('Failed joining room'); window.socket.emit('join_room',{room_name:room_name});window.room_name = room_name;"> Join room</button>
     <button onclick = "window.location = 'https://secret-dusk-20902.herokuapp.com/lesson'"> To lesson</button>
-     <button onclick = "window.location = 'https://secret-dusk-20902.herokuapp.com/classroom'"> To classroom</button>
+     <button target="_blank" onclick = 'window.open("http://www.repl.it", "_blank");'> To classroom</button>
     <button onclick = "window.location = 'https://secret-dusk-20902.herokuapp.com/csd'"> To CSD example</button>
      <button onclick = "window.location = 'https://secret-dusk-20902.herokuapp.com/htmlexample'"> To HTML example</button>
     <button onclick = "window.location = 'https://secret-dusk-20902.herokuapp.com/reactexample'"> To React example</button>
