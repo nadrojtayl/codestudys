@@ -33,8 +33,9 @@
 		axios.get('https://script.google.com/macros/s/AKfycbwd6jCvpVt0WuLiZMGwsuSVNqQPvHibhK-X20kv0xN9xFO9eGet/exec?sheetName=Sheet1')
           .then(function (response){
           	console.log(response);
-            response.forEach(function(student){
-            	if(student.Name === getUrlParameter(name)){
+          	var loaded = false;
+            response.data.forEach(function(student){
+            	if(student.Name === getUrlParameter(name) && !false){
 
             		$('body').append($(`
 
