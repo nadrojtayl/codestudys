@@ -24,7 +24,7 @@
                     "Accept": "application/json"
                   }})
 		          .then(function (response) {
-		            console.log(response);
+		            window.location = "https://secret-dusk-20902.herokuapp.com/signin/main?name" + name
 		          })
 		          .catch(function (error) {
 		            alert(error)
