@@ -3,13 +3,39 @@
 <head>
 	<title>VineyardAppCamp</title>
 	<link rel="shortcut icon" type="image/x-icon" href="/logo.png"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/logo.png"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
 </head>
 <body>
+	<script type="text/javascript">
+		function login(name){
+			axios.get('https://script.google.com/macros/s/AKfycbwd6jCvpVt0WuLiZMGwsuSVNqQPvHibhK-X20kv0xN9xFO9eGet/exec?sheetName=Sheet1')
+	          .then(function (response){
+	          	var loaded = false;
+	            response.data.forEach(function(student){
+	            	if(student.Name === name && !loaded){
+
+	            		window.location = "secret-dusk-20902.herokuapp.com/main?name" = name;
+
+	            		loaded = true;
+	            	}
+	            })
+	            alert("You dont have an account!")
+	          })
+		}
+	</script>
 	<div>
 	    <img src = "/vac_logo.png"></img>
 	    <p>Enter your firstname_lastname to get started.</p>
 	    <input id = "name_input"></input><br>
-	    <button>Log in</button><br>
+	    <button onclick = "login($('#name_input'))">Log in</button><br>
 	    <a href = "https://secret-dusk-20902.herokuapp.com/signin" >It's my first day of class</a>
 
     </div>
