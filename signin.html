@@ -16,6 +16,16 @@
 	<div>
 		<script type="text/javascript">
 			function create_student(name,link){
+				if(name === " " || name.indexOf('_') === -1){
+					alert('Please follow the format Firstname_Lastname');
+					return
+				}
+
+				if(link.indexOf("docs.google") === -1){
+					alert("Your link is in the wrong format. Please copy the google doc and link to your copy.");
+					return;
+				}
+
 				 axios.post('https://script.google.com/macros/s/AKfycbwd6jCvpVt0WuLiZMGwsuSVNqQPvHibhK-X20kv0xN9xFO9eGet/exec?sheetName=Sheet1', {
 		            "Name": name,
 		            "Walkthrough_link": link
