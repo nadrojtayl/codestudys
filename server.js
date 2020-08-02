@@ -37,6 +37,12 @@ app.get("/",function(req,res){
 	res.sendFile(__dirname + "/placeholder.html");
 })
 
+app.get("/main",function(req,res){
+
+  res.sendFile(__dirname + "/main.html");
+})
+
+
 app.get("/signin",function(req,res){
 
   res.sendFile(__dirname + "/signin.html");
