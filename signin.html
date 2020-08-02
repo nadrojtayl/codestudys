@@ -19,10 +19,10 @@
 				 axios.post('https://script.google.com/macros/s/AKfycbwd6jCvpVt0WuLiZMGwsuSVNqQPvHibhK-X20kv0xN9xFO9eGet/exec?sheetName=Sheet1', {
 		            "Name": name,
 		            "Walkthrough_link": link
-		          },headers: {
+		          },{headers: {
                     "Content-Type": "text/plain;charset=utf-8",
                     "Accept": "application/json"
-                  })
+                  }})
 		          .then(function (response) {
 		            console.log(response);
 		          })
