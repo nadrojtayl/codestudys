@@ -36,11 +36,12 @@
           	console.log(getUrlParameter("name"))
           	var loaded = false;
             response.data.forEach(function(student){
+            	
             	if(student.Name === getUrlParameter("name") && !loaded){
 
             		$('body').append($(`
 
-            			<iframe style = "height: 1000px; width:1600px;"`+ student.Walkthrough_link+`"></iframe>
+            			<iframe style = "height: 1000px; width:1600px;" src="`+ student.Walkthrough_link+`"></iframe>
 
             			`))
 
