@@ -191,12 +191,19 @@ I'M A BUTTON
 	  </div>
 	</article>
 	<article style = " position: absolute; left: 50%;align-items: center; top:14%; width: 45%;" class="tile is-child">
+		<h3 class="child_element title is-3" style = "margin-bottom: -20px; font-weight: bold; text-align: center; color: black; "  > VARIABLES:</h3>
+		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "output_div">
+[{"Name":"Sam"},{"Name":"Bran"}]
+		</div>
+	</article>
+
+	<article style = " position: absolute; left: 50%;align-items: center; top:40%; width: 45%;" class="tile is-child">
 		<h3 class="child_element title is-3" style = "margin-bottom: -20px; font-weight: bold; text-align: center; color: black; "  > MAKE THIS:</h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "output_div">
 	Nothing
 		</div>
 	</article>
-	<article style = "position: absolute; left: 50%;align-items: center; top:33%; width: 45%;" class="tile is-child">
+	<article style = "position: absolute; left: 50%;align-items: center; top:59%; width: 45%;" class="tile is-child">
 		<h3 class = "child_element title is-3" style = "text-align: center; font-weight: bold; margin-top: 60px; color: black;" >LOOK LIKE THIS:   </h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "goal_div">
 Alex
@@ -208,7 +215,7 @@ Alex
 			var input = $("#input_div").text()
 	
 			try {
-		 		$("#output_div").empty().append(JSON.stringify(input));
+		 		$("#output_div").empty().append(eval(input));
 		 	} catch(e){
 		 		$("#output_div").empty().append(e);
 		 	}
