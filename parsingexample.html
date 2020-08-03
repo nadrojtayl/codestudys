@@ -193,7 +193,7 @@ I'M A BUTTON
 	<article style = " position: absolute; left: 50%;align-items: center; top:14%; width: 45%;" class="tile is-child">
 		<h3 class="child_element title is-3" style = "margin-bottom: -20px; font-weight: bold; text-align: center; color: black; "  > VARIABLES:</h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "variable_div">
-[{"Name":"Sam"},{"Name":"Bran"}]
+data = [{"Name":"Sam"},{"Name":"Bran"}]
 		</div>
 	</article>
 
@@ -206,7 +206,7 @@ I'M A BUTTON
 	<article style = "position: absolute; left: 50%;align-items: center; top:59%; width: 45%;" class="tile is-child">
 		<h3 class = "child_element title is-3" style = "text-align: center; font-weight: bold; margin-top: 60px; color: black;" >LOOK LIKE THIS:   </h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "goal_div">
-Alex
+"Alex"
 	    </div>
 	</article>
 	</section>
@@ -292,13 +292,10 @@ function skip_level(){
 //LEVELS here//
 
 window.levels = [{
-	message: "Yes! Congratulations. You learned that the way code works is that the computer reads something written down (this is the code) and uses it to decide what to do, or what it should show on the screen. A code is basically a set of instructions for the computer. This is an example of the html tag for a button. You can edit the code to change what the computer does."
+	message: "Yes!"
 },
-{goal:
-	`
-<button style = "width:100px; height: 100px;" >I'M A BUTTON THAT SAYS THIS AND IS 100 pixels wide</button>
-	`,
-message:"Yes! Congratulations. You learned about the style attribute. The style attribute lets you choose how something that you coded onto the page will look. You unlocked the list of styles.",
+{goal: "Ben",
+message:"Yes!",
 after:function(){
 	$("#style_list_button").show()
 },
