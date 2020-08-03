@@ -322,7 +322,8 @@ message:"Yes!",
 password:"passwerd",
 after:function(){
 		window.poems = [{"Author":"Keats","FirstWord":"Hello"},{"Author":"Siddartha","FirstWord":"World"},{"Author":"Davian","FirstWord":"Yesterday"}]
-    window.index = 2;
+    window.index = 0;
+    alert("You must use the variable index in your answer");
 		$("#variable_div").empty().append("poems = " + JSON.stringify(window.poems) + "; " + "index = 2;");
 }
 },
