@@ -37,6 +37,11 @@ app.get("/",function(req,res){
 	res.sendFile(__dirname + "/placeholder.html");
 })
 
+app.get("/parsing",function(req,res){
+
+  res.sendFile(__dirname + "/parsingexample.html");
+})
+
 app.get("/main",function(req,res){
 
   res.sendFile(__dirname + "/main.html");

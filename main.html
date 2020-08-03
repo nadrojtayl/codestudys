@@ -36,7 +36,7 @@
           	console.log(getUrlParameter("name"))
           	var loaded = false;
             response.data.forEach(function(student){
-            	
+            	console.log()
             	if(student.Name === getUrlParameter("name") && !loaded){
 
             		$('body').append($(`
