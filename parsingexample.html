@@ -261,9 +261,7 @@ function check(){
 }
 
 function next_level(){
-	alert('here');
 	if(check()){
-		alert(window.levels[window.level].message)
 		if(window.levels[window.level].after !== undefined){
 			window.levels[window.level].after();
 		}
@@ -292,58 +290,58 @@ window.levels = [
 {goal: "Ben",
 message:"Yes!",
 after:function(){
-	$("#style_list_button").show()
 	window.data = [{"Name":"Cran"},{"Name":"Brian"},{"Name":"Devin"}]
-	$("#variable_div").empty().append(JSON.stringify(window.data));
+	$("#variable_div").empty().append("data = " + JSON.stringify(window.data));
 },
 password:"pass"
 },
 {goal:`"Devin"`,
-message:"Yes! Congratulations. You learned how to change the background-color.",
-password:"password"
+message:"Yes!",
+password:"password",
+after:function(){
+		window.animals = [{"Species":"Dog","Name":"Tannor"},{"Name":"Zoe","Species":"Cat"},{"Name":"Devin","Species":"Lizard"}]
+		$("#variable_div").empty().append("animals = " + JSON.stringify(window.animals));
+}
+},
+{goal:`"Lizard"`,
+message:"Yes!",
+password:"passwerd",
+after:function(){
+		window.users = [{"Username":"James","Password":"asdf"},{"Userame":"Sruthi","Password":"Sruthi22"},{"Username":"Jamal","Password":"keepthemout"}]
+		$("#variable_div").empty().append("users = " + JSON.stringify(window.users));
+}
+},
+{goal:`"asdf"`,
+message:"Yes!",
+password:"passwerd",
+after:function(){
+		window.poems = [{"Author":"Keats","FirstWord":"Hello"},{"Author":"Siddartha","FirstWord":"World"},{"Author":"Davian","FirstWord":"Yesterday"}]
+		$("#variable_div").empty().append("poems = " + JSON.stringify(window.poems));
+}
 },
 {goal:
-	`Devin`,
-message:"Yes! Congratulations. You learned to create multiple buttons.",
-password:"passwerd"
+	`"Hello World"`,
+message:"Congratulations!",
+password:"passwerd",
+after:function(){
+		window.people = [[{"Name":"Jane"}], [{"Name": "Brian"}] ]
+		$("#variable_div").empty().append("people = " + JSON.stringify(window.poems));
+}
 },
+
+
 {goal:
-	`
-<p> I'm a text element above an input where people can put in text</p>
-<input type = "text"><input>
-	`,
-message:"Congrats! You learned how to create an input element.",
-password:"passwerd"
-},
-{goal:
-	`	
-<p>Oh say can you see </p>
-<p>By the dawns early lights </p>
-<button>What so proudly</button>
-		
-	     
-	`,
+	`"Brian"`,
 message:"Congratulations. You have truly excelled.",
 password:"passwerd"
-},
-
-
-{goal:
-	`	
-<p> Im a paragraph</p>
-<button>Click me to proceed</button>
-<input type = "text"></input>
-
-	     
-	`,
-message:"Congratulations. You have truly excelled.",
-password:"passwerd"
+after:function(){
+		window.people = [[{"Name":"Jane"}], [{"Name": "Brian"}] ]
+		$("#variable_div").empty().append("people = " + JSON.stringify(window.poems));
+}
 },
 
 {goal:
-	`	
-<p>This one's more creative. Use what you know already to create the outline for a simple notes app.</p>
-	`,
+	`"JaneBrian"`,
 message:"Congratulations. You are ready.",
 password:"passwerd"
 },
