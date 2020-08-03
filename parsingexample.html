@@ -193,13 +193,13 @@ I'M A BUTTON
 	<article style = " position: absolute; left: 50%;align-items: center; top:14%; width: 45%;" class="tile is-child">
 		<h3 class="child_element title is-3" style = "margin-bottom: -20px; font-weight: bold; text-align: center; color: black; "  > MAKE THIS:</h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "output_div">
-			<button style = "width:400px; height: 100px; display: inline-block; align-self: center;">I'M A BUTTON</button>
+	Nothing
 		</div>
 	</article>
 	<article style = "position: absolute; left: 50%;align-items: center; top:33%; width: 45%;" class="tile is-child">
 		<h3 class = "child_element title is-3" style = "text-align: center; font-weight: bold; margin-top: 60px; color: black;" >LOOK LIKE THIS:   </h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "goal_div">
-	    	<button style = "width:400px; height: 100px;" >I'M A BUTTON THAT SAYS THIS</button>
+Alex
 	    </div>
 	</article>
 	</section>
@@ -208,7 +208,7 @@ I'M A BUTTON
 			var input = $("#input_div").text()
 	
 			try {
-		 		$("#output_div").empty().append(eval(input));
+		 		$("#output_div").empty().append(JSON.stringify(input));
 		 	} catch(e){
 		 		$("#output_div").empty().append(e);
 		 	}
@@ -254,41 +254,8 @@ window.onclick = function(event) {
 
 function check(){
 
-	if ($("#output_div").children().length !== $("#goal_div").children().length){return false}
-	var output = true;
-	var goal_children = $("#goal_div").children();
 
-	$("#output_div").children().each(function(ind,elem){
-
-		if($(elem).prop("tagName") !== $(goal_children.get(ind)).prop("tagName")){
-			output = false;
-		}
-
-		if($(elem).text().trim() !== $(goal_children.get(ind)).text().trim()){
-			output = false;
-		}
-
-		if($(goal_children.get(ind)).attr('style') !== undefined){
-			var corresponding_child_attributes = $(goal_children.get(ind)).attr('style').split(";")
-			var obj = {}
-
-			corresponding_child_attributes.forEach(function(attr){
-				if(attr.trim().length === 0){return}
-				obj[attr.split(":")[0].trim()] = attr.split(":")[1].trim()
-			})
-		}
-
-		if($(elem).attr('style') !== undefined){
-			$(elem).attr('style').split(";").forEach(function(attr){
-				if(attr.trim().length === 0){return}
-
-				if(obj[attr.split(":")[0].trim()] !== attr.split(":")[1].trim()){
-					output = false;
-				}
-			})
-		}
-	})
-	return output;
+	return $("#output_div").text() === $("#goal_div").text() 
 }
 
 function next_level(){
