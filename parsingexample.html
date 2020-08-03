@@ -195,6 +195,7 @@ button:hover {
 	<article style = "position: absolute; left: 50%;align-items: center; top:59%; width: 45%;" class="tile is-child">
 		<h3 class = "child_element title is-3" style = "text-align: center; font-weight: bold; margin-top: 60px; color: black;" >LOOK LIKE THIS:   </h3>
 		<div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "goal_div">
+	    	<button style = "width:400px; height: 100px;" >I'M A BUTTON THAT SAYS THIS</button>
 	    </div>
 	</article>
 	</section>
@@ -203,7 +204,7 @@ button:hover {
 			var input = $("#input_div").text()
 	
 
-		 $("#output_div").empty().append("more")
+		 $("#output_div").empty().append(input)
 		}
 
 		$("#input_div").on("input",render)
