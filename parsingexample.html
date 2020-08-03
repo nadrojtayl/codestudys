@@ -184,10 +184,7 @@ button:hover {
 	<article  style = "position: absolute;top:40%; width: 30%; left:16%;" class="tile is-child">
 		<h3 style = "margin-top: -13px; margin-left:37%; text-align: center; font-weight: bold; float:left; color:black" class="title is-3">CODE</h3>
 		<div style="border:solid 5px black; height: 318px;">
-		<p id="input_div" style = "font-size:24px; width:100%; height: 100%; float:left; margin-top: -11%; color: #1C1B79;" contenteditable="true" white>&lt;button style = "width:400px; height: 100px;" &gt;
-I'M A BUTTON
-&lt;/button&gt;
-		</p>
+		<p id="input_div" style = "font-size:24px; width:100%; height: 100%; float:left; margin-top: -11%; color: #1C1B79;" contenteditable="true" white>//WRITE CODE HERE</p>
 	  </div>
 	</article>
 	<article style = " position: absolute; left: 50%;align-items: center; top:14%; width: 45%;" class="tile is-child">
@@ -296,6 +293,8 @@ window.levels = [{
 message:"Yes!",
 after:function(){
 	$("#style_list_button").show()
+	window.data = [{"Name":"Cran"},{"Name":"Brian"},{"Name":"Devin"}]
+	$("#variable_div").empty().append(JSON.stringify(window.data));
 },
 password:"pass"
 },
