@@ -277,8 +277,15 @@ function next_level(){
 }
 
 function skip_level(){
-		window.level = window.level + 1;
-		$("#goal_div").empty().append($(window.levels[window.level].goal))
+		if(window.levels[window.level].after !== undefined){
+      window.levels[window.level].after();
+    }
+    window.level = window.level + 1;
+    if(window.level > 1){
+      $("#input_div").empty().text("//REPLACE ME WITH CODE")
+    }
+    alert(window.levels[window.level].message);
+    $("#goal_div").empty().text(window.levels[window.level].goal);
 
 	
 }
