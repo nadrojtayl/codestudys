@@ -8,14 +8,13 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id = "example" style =  "border-style: solid; position: absolute; top:0px; left:0px; width:25%; height: 15%;"></div>
-	<input id = 'input' style = "background-color: grey; position: absolute; top:40%;" onkeyup = "fill('example',eval($(this).val()))">
+	<div id = "example" style =  "border-style: solid; position: absolute; top:0px; left:0px; width:100%; height: 15%;"></div>
+	<input id = 'input' style = "background-color: grey; position: absolute; top:40%;" onkeyup = "fill($('#example'),eval($(this).val()))">
 	<script type="text/javascript">
 		$("#inputv").on("input",fill)
-		function fill(id, code){
-			var width = $("#" + id).width(), height = $("#" + id).height();
+		function fill(jqueryObj, code){
+			var width = jqueryObj.width(), height = jqueryObj.height();
 			var isobj, arr;
-			var jqueryObj = $("#" + id);
 			jqueryObj.empty();
 
 			if(typeof code === "string" || typeof code === "number" || typeof code === "boolean"){
@@ -35,10 +34,17 @@
 				code.forEach(function(elem, int){
 					var superscript = int;
 					var content = elem;
+					contentisobj = false;
 					int = int + 1;
 					if(isobj){
 						superscript = elem;
 						content = arr[elem];
+					}
+					if(typeof content === "object"){
+						var old_obj = content;
+						contentisobj = true;
+						content = "";
+
 					}
 					elem = $(`<div><p style='margin:0px;position:absolute;top:0px;left:0px; margin-left:40%; font-size:12px;'>`+ superscript+`</p>
 
@@ -46,6 +52,10 @@
 
 
 						</div>`)
+
+					
+
+					
 					elem.css("height",row_width);
 					elem.css("width",col_width);
 					elem.css("position",'absolute');
@@ -61,6 +71,11 @@
 					elem.css("display","table-cell");
 					elem.css("margin","0px");
 					left += col_width;
+
+					if(contentisobj){
+						fill(elem,old_obj)
+					}
+
 					if(int % 5 === 0 && int > 0){
 						top += row_width;
 						left = 0;
