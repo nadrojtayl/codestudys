@@ -8,7 +8,7 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id = "example" style =  "border-style: solid; position: absolute; top:0px; left:0px; width:100%; height: 15%;"></div>
+	<div id = "example" style =  "border-style: solid; position: absolute; top:0px; left:0px; width:50%; height: 15%;"></div>
 	<input id = 'input' style = "background-color: grey; position: absolute; top:40%;" onkeyup = "fill($('#example'),eval($(this).val()))">
 	<script type="text/javascript">
 		$("#inputv").on("input",fill)
@@ -28,7 +28,7 @@
 
 				}
 			
-				var row_num = Math.ceil(code.length/5), col_width = width/5, row_width = height/row_num;
+				var row_num = Math.ceil(code.length/5), col_width = width/(code.length > 5 ? 5: code.length), row_width = height/row_num;
 				var top = 0, left = 0;
 				
 				code.forEach(function(elem, int){
@@ -46,7 +46,7 @@
 						content = "";
 
 					}
-					elem = $(`<div><p style='margin:0px;position:absolute;top:0px;left:0px; margin-left:40%; font-size:12px;'>`+ superscript+`</p>
+					elem = $(`<div><p style='margin:0px;position:absolute;top:0px;left:0px; margin-left:80%; font-size:12px;'>`+ superscript+`</p>
 
 						<p style='margin:0px;position:absolute;top:30%;left:30%; margin-left:5px; font-size:18px;'>`+content+`</p>
 
