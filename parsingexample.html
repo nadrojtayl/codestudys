@@ -7,6 +7,70 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    
+    function fill(id, code){
+      var width = $("#" + id).width(), height = $("#" + id).height();
+      var isobj, arr;
+      var jqueryObj = $("#" + id);
+      jqueryObj.empty();
+
+      if(typeof code === "string" || typeof code === "number" || typeof code === "boolean"){
+        jqueryObj.text(code)
+        return
+      } else if (typeof code === "object"){
+        if(!Array.isArray(code)){
+          arr = code;
+          code = Object.keys(code);
+          isobj = true;
+
+        }
+      
+        var row_num = Math.ceil(code.length/5), col_width = width/5, row_width = height/row_num;
+        var top = 0, left = 0;
+        
+        code.forEach(function(elem, int){
+          var superscript = int;
+          var content = elem;
+          int = int + 1;
+          if(isobj){
+            superscript = elem;
+            content = arr[elem];
+          }
+          elem = $(`<div><p style='margin:0px;position:absolute;top:0px;left:0px; margin-left:40%; font-size:12px;'>`+ superscript+`</p>
+
+            <p style='margin:0px;position:absolute;top:30%;left:30%; margin-left:5px; font-size:18px;'>`+content+`</p>
+
+
+            </div>`)
+          elem.css("height",row_width);
+          elem.css("width",col_width);
+          elem.css("position",'absolute');
+          elem.css("left", left );
+          elem.css("top",top);
+          elem.css("border-color","black");
+          elem.css("border-width",1);
+          elem.css("border-style","solid");
+          elem.css("text-align","center");
+          elem.css("align-items","center");
+          elem.css("justify-content","center");
+          elem.css("vertical-align","middle");
+          elem.css("display","table-cell");
+          elem.css("margin","0px");
+          left += col_width;
+          if(int % 5 === 0 && int > 0){
+            top += row_width;
+            left = 0;
+          }
+
+          jqueryObj.append(elem);
+        })
+      } 
+
+
+    }
+
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
@@ -192,6 +256,13 @@ button:hover {
 data = [{"Name":"Jordan"},{"Name":"Sam"},{"Name":"Ben"},{"Name":"David"},{"Name":"Alex"}]
 		</div>
 	</article>
+
+    <article style = " position: absolute; left: 10%;align-items: center; top:14%; width: 45%;" class="tile is-child">
+    <h3 class="child_element title is-3" style = "margin-bottom: -20px; font-weight: bold; text-align: center; color: black; "  > VARIABLES:</h3>
+    <div style = "border:solid 5px black; width: 80%; display: flex;align-items: center; justify-content: center; " class = "child_element" id = "variable_div">
+data = [{"Name":"Jordan"},{"Name":"Sam"},{"Name":"Ben"},{"Name":"David"},{"Name":"Alex"}]
+    </div>
+  </article>
 
 	<article style = " position: absolute; left: 50%;align-items: center; top:40%; width: 45%;" class="tile is-child">
 		<h3 class="child_element title is-3" style = "margin-bottom: -20px; font-weight: bold; text-align: center; color: black; "  > MAKE THIS:</h3>

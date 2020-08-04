@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id = "example" style =  "border-style: solid; position: absolute; top:0px; left:0px; width:25%; height: 15%;"></div>
+	<input id = 'input' style = "background-color: grey; position: absolute; top:40%;" onkeyup = "fill('example',eval($(this).val()))">
+	<script type="text/javascript">
+		$("#inputv").on("input",fill)
+		function fill(id, code){
+			var width = $("#" + id).width(), height = $("#" + id).height();
+			var isobj, arr;
+			var jqueryObj = $("#" + id);
+			jqueryObj.empty();
+
+			if(typeof code === "string" || typeof code === "number" || typeof code === "boolean"){
+				jqueryObj.text(code)
+				return
+			} else if (typeof code === "object"){
+				if(!Array.isArray(code)){
+					arr = code;
+					code = Object.keys(code);
+					isobj = true;
+
+				}
+			
+				var row_num = Math.ceil(code.length/5), col_width = width/5, row_width = height/row_num;
+				var top = 0, left = 0;
+				
+				code.forEach(function(elem, int){
+					var superscript = int;
+					var content = elem;
+					int = int + 1;
+					if(isobj){
+						superscript = elem;
+						content = arr[elem];
+					}
+					elem = $(`<div><p style='margin:0px;position:absolute;top:0px;left:0px; margin-left:40%; font-size:12px;'>`+ superscript+`</p>
+
+						<p style='margin:0px;position:absolute;top:30%;left:30%; margin-left:5px; font-size:18px;'>`+content+`</p>
+
+
+						</div>`)
+					elem.css("height",row_width);
+					elem.css("width",col_width);
+					elem.css("position",'absolute');
+					elem.css("left", left );
+					elem.css("top",top);
+					elem.css("border-color","black");
+					elem.css("border-width",1);
+					elem.css("border-style","solid");
+					elem.css("text-align","center");
+					elem.css("align-items","center");
+					elem.css("justify-content","center");
+					elem.css("vertical-align","middle");
+					elem.css("display","table-cell");
+					elem.css("margin","0px");
+					left += col_width;
+					if(int % 5 === 0 && int > 0){
+						top += row_width;
+						left = 0;
+					}
+
+					jqueryObj.append(elem);
+				})
+			} 
+
+
+		}
+	</script>
+</body>
+</html>
