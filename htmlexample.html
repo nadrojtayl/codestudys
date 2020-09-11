@@ -163,6 +163,7 @@ button:hover {
 		<button class = "button1" style="left:50px" onclick="skip_level();" >Skip level</button>
 		<button class = "button1" style="left:60px" id="b2"  onclick="next_level()">Submit Answer</button>
 		<button class = "button1"  style="left:100px; width:190px" onclick="alert('<button></button>\n<p></p>\n<input></input>')">Remind me what tags I can write</button>
+		<p id = "level_counter" style = "position: absolute; top: 0; right:1%; color:white;">Lvl 1/10</p>
 
 		<button hidden  class = "button" id ="style_list_button"  onclick="alert(style_list)">Style List</button>
 	</div>
@@ -293,7 +294,7 @@ function next_level(){
 			$("#input_div").empty().text("//REPLACE ME WITH CODE")
 		}
 		$("#goal_div").empty().append($(window.levels[window.level].goal))
-
+		$("#level_counter").text().text("Lvl " + window.level + "/8")
 	} else {
 		alert("Try again");
 	}
@@ -301,6 +302,8 @@ function next_level(){
 
 function skip_level(){
 		window.level = window.level + 1;
+		$("#level_counter").text();
+		$("#level_counter").text("Lvl " + (parseInt(window.level) + 1) + "/8")
 		$("#goal_div").empty().append($(window.levels[window.level].goal))
 
 	

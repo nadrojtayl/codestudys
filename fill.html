@@ -9,10 +9,10 @@
 </head>
 <body>
 	<div id = "example" style =  "border-style: solid; position: absolute; top:0px; left:0px; width:50%; height: 15%;"></div>
-	<input id = 'input' style = "background-color: grey; position: absolute; top:40%;" onkeyup = "fill($('#example'),eval($(this).val()))">
+	<input id = 'input' style = "background-color: grey; position: absolute; top:40%;" onkeyup = "fill($('#example'),eval($(this).val()),3)">
 	<script type="text/javascript">
 		$("#inputv").on("input",fill)
-		function fill(jqueryObj, code){
+		function fill(jqueryObj, code,border_width){
 			var width = jqueryObj.width(), height = jqueryObj.height();
 			var isobj, arr;
 			jqueryObj.empty();
@@ -62,7 +62,7 @@
 					elem.css("left", left );
 					elem.css("top",top);
 					elem.css("border-color","black");
-					elem.css("border-width",1);
+					elem.css("border-width",border_width);
 					elem.css("border-style","solid");
 					elem.css("text-align","center");
 					elem.css("align-items","center");
@@ -73,7 +73,7 @@
 					left += col_width;
 
 					if(contentisobj){
-						fill(elem,old_obj)
+						fill(elem,old_obj,1)
 					}
 
 					if(int % 5 === 0 && int > 0){
