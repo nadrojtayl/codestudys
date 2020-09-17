@@ -166,7 +166,7 @@ jQuery.fn.getAllcss = (function(css2) {
 
 		window.adjust_message = function(){
 			console.log($("body").find("button"))
-			if($("body").find("button").length === 1){
+			if($("body").find("button").length === 0){
 				$("#system_message").empty().text("People want to buy your pizza. There's no button on your website they can click to buy!");
 				return;
 			}
