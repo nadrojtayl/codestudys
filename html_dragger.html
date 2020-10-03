@@ -101,6 +101,7 @@ a {
 }
 	</style>
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	window.drag_mode = false;
@@ -157,8 +158,30 @@ a {
 		if(!window.drag_mode){
 			toggle_drag_mode();
 		}
+
+		if(window.user === "undefined"){
+			alert("Indicate a username in your url to be able to save!")
+			if(window.drag_mode){
+				toggle_drag_mode();
+			}
+			return;
+		}
 		var html_content = $("#menu").html();
-		console.log(html_content);
+		
+
+		axios.post('https://streamedbooks.herokuapp.com/html_examples', {
+			  name: window.user,
+			  html: html_content
+			}).then(function(res){
+				if(res.data === "Saved"){
+					alert("OK SAVED!");
+				} else {
+					alert ("There was a problem! Reload the page and try again!")
+				}
+			})
+
+
+
 	}
 	
 	function add_tile(){
@@ -184,15 +207,19 @@ a {
 		  })
 		})
 
-
+	window.styles_open = false;
+	window.elements_open = false;
 	</script>
 	<button onclick="add_tile()" style="position: absolute;top: 0; left: 1%">Add</button>
 	<button onclick="toggle_drag_mode()" style="position: absolute;top: 0; left: 5%">Drag Mode</button>
 	<button onclick="save()" style="position: absolute;top: 0; left: 12%">Save</button>
 
-	<button onclick="window.elements_modal.dialog('open')" style="position: absolute;top: 0; left: 20%">See element list</button>
+	<button onclick="if(!window.elements_open){ window.elements_open = true; window.elements_modal.dialog('open')} else {window.elements_open = false; window.elements_modal.dialog('close')} " style="position: absolute;top: 0; left: 20%">See element list</button>
 
-	<button onclick="window.styles_modal.dialog('open')"  style="position: absolute;top: 0; left: 29%">See style attribute list</button>
+	<button onclick="if(!window.styles_open){ window.styles_open = true; window.styles_modal.dialog('open')} else {window.styles_open = false; window.styles_modal.dialog('close')} "  style="position: absolute;top: 0; left: 29%">See style attribute list</button>
+
+	<p id = "web_url"  style="color:white; position: absolute;top: -2%; left: 45%"> Visit your website at https://streamedbooks.herokuapp.com/html_examples?example_name=</a>
+		<div style = "background-color: grey; width: 100%; height:5%; position: absolute;top:0; left:0; z-index:-50000"></div>
 	<a name="top"></a>
 <div id="container"><!-- container start -->
   <ul id="menu"><!-- menu start -->
@@ -213,6 +240,20 @@ a {
 <tr>
 <td><a href="tag_b.asp">&lt;b&gt;</a></td>
 <td>Defines bold text</td>
+</tr>
+<tr>
+<td><a href="tag_b.asp">&lt;h3&gt;</a></td>
+<td>Defines a big header</td>
+</tr>
+<tr>
+	<tr>
+<td><a href="tag_b.asp">&lt;h2&gt;</a></td>
+<td>Defines an even bigger header</td>
+</tr>
+<tr>
+<tr>
+<td><a href="tag_b.asp">&lt;h1&gt;</a></td>
+<td>Defines the biggest header</td>
 </tr>
 <tr>
 <td><a href="tag_base.asp">&lt;base&gt;</a></td>
@@ -353,7 +394,63 @@ text</td>
 </tbody></table>
 
   </div>
-   <div id = "styles">
+   <div id = "styles" style = "background-color: pink;">
+   	<table>
+   	<tr>
+		<td><a href="tag_wbr.asp">background-color</a></td>
+		<td>Defines background color</td>
+	</tr>
+	<tr>
+		<td><a href="tag_wbr.asp">color</a></td>
+		<td>Defines font color</td>
+	</tr>
+	<tr>
+		<td><a href="tag_wbr.asp">width</a></td>
+		<td>Defines width, defined in percentages</td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">height</a></td>
+		<td>Defines height, defined in percentages</td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">border-radius</a></td>
+		<td>Defines how 'round' the element is</td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">border-width</a></td>
+		<td>Defines how wide the border is</td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">border-color</a></td>
+		<td>Defines the color of the border</td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">border-style</a></td>
+		<td>Defines the style of the border, solid or dotted</td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">font-size</a></td>
+		<td>Defines the font size </td>
+	</tr>
+
+	<tr>
+		<td><a href="tag_wbr.asp">font-style</a></td>
+		<td>Defines the font size </td>
+	</tr>
+
+
+   			
+	<tbody>
+	</tbody>
+
+
+   	</table>
   </div>
 </div><!-- container end -->
 <script type="text/javascript">
@@ -388,6 +485,32 @@ text</td>
         
       }
     });
+</script>
+<script type="text/javascript">
+	
+	var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+window.user = getUrlParameter("user");
+if(window.user === undefined){
+	window.user = "undefined";
+}
+
+$("#web_url").text("").text("https://streamedbooks.herokuapp.com/html_examples?example_name=" + window.user);
+
+
 </script>
 </body>
 </html>
