@@ -156,7 +156,7 @@ ul, li {
 			$('.can_drag').each(function() {
 				// console.log("here");
 	  			// Create a new element and assign it attributes from the current element
-			  var NewElement = $(" <input class='tile t2 drag_tile can_drag'></input> ");
+			  var NewElement = $(" <textarea class='tile t2 drag_tile can_drag'></textarea> ");
 			  console.log(this.attributes)
 			  NewElement.val($(this).val());
 			  NewElement.css("top", $(this).css("top"));
@@ -181,7 +181,7 @@ ul, li {
 	}
 	
 	function add_tile(){
-		$("#menu").append($(`<input class="tile t2 drag_tile can_drag"></input>`))
+		$("#menu").append($(`<textarea class="tile t2 drag_tile can_drag"></textarea>`))
 
 		 $('.tile').draggable();
 	}
@@ -211,7 +211,7 @@ ul, li {
 	<a name="top"></a>
 <div id="container"><!-- container start -->
   <ul id="menu"><!-- menu start -->
-   <input class="tile t2 drag_tile can_drag"></input>   
+   <textarea class="tile t2 drag_tile can_drag"></textarea>   
   </ul><!-- menu end -->
   
   <div id="reset">Reset</div>
