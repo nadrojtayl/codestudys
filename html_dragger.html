@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML dragger</title>
+</head>
+<body>
+	<style type="text/css">
+		/*======================= Extra Sh*t 
+Colors:
+#008080
+#00b3b3
+*/
+/*======================= Reset Yo */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+  font: 12pt Trebuchet MS;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #CCC;
+}
+
+h1 {
+  color: #666;
+  font: lighter 40pt Raleway ;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-type: none;
+  list-style: none;
+}
+
+
+/*======================= IDs + Classes */
+#container {
+  height: 500px;
+  margin: 200px auto auto auto;
+  width: 530px;
+}
+
+#menu {
+  position: relative;
+}
+
+.tile {
+  display: inline-block;
+  height: 20px;
+  position: absolute;
+  top: 50px;
+  width: 150px;
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.tile:nth-of-type(1) {
+  left: 0;
+}
+
+.tile:nth-of-type(2) {
+  left: 90px;
+}
+
+.tile:nth-of-type(3) {
+  left: 180px;
+}
+
+.tile:nth-of-type(4) {
+  left: 270px;
+}
+
+.tile:nth-of-type(5) {
+  left: 360px;
+}
+
+.tile:nth-of-type(6) {
+  left: 450px;
+}
+
+.t1 {
+  background-color: #008080;
+}
+
+.t2 {
+  background-color: #00b3b3;
+}
+
+#reset {
+  background-color: teal;
+  bottom: 10px;
+  display: none;
+  font: 10pt Trebuchet MS;
+  letter-spacing: 5px;
+  padding: 5px;
+  position: fixed;
+  right: 50px;
+  text-transform: uppercase;
+}
+
+ #drop {
+  background-color: teal;
+  bottom: 10px;
+  font: 10pt Trebuchet MS;
+  letter-spacing: 5px;
+  padding: 5px;
+  position: absolute;
+  right: 50px;
+  text-transform: uppercase;
+   z-index: -1000;
+}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	window.drag_mode = false;
+	function toggle_drag_mode(){
+		if(!window.drag_mode){
+			$('.tile').each(function() {
+				console.log("here");
+	  			// Create a new element and assign it attributes from the current element
+			  
+			  var potential_html = $(this).val();
+			  // alert(/<\/?[a-z][\s\S]*>/i.test(potential_html));
+			  if(! /<\/?[a-z][\s\S]*>/i.test(potential_html)){
+			  	potential_html = "<p>Not valid html!</p>"
+			  }
+			  var NewElement = $(potential_html);
+
+
+			 
+
+			  NewElement.val($(this).val());
+			  NewElement.addClass("can_drag")
+			  NewElement.css("top", $(this).css("top"));
+			  NewElement.css("left", $(this).css("left"));
+
+
+			  // Replace the current element with the new one and carry over the contents
+			  $(this).replaceWith(NewElement);
+
+			});
+			$('.can_drag').draggable();
+			window.drag_mode = true;
+		} else{
+			// alert("MROEN")
+			$('.can_drag').each(function() {
+				// console.log("here");
+	  			// Create a new element and assign it attributes from the current element
+			  var NewElement = $(" <input class='tile t2 drag_tile can_drag'></input> ");
+			  console.log(this.attributes)
+			  NewElement.val($(this).val());
+			  NewElement.css("top", $(this).css("top"));
+			  NewElement.css("left", $(this).css("left"));
+
+			  // Replace the current element with the new one and carry over the contents
+			  $(this).replaceWith(NewElement);
+
+			});
+			$('.can_drag').draggable();
+			window.drag_mode = false;
+		}
+
+	}
+
+	function save(){
+		if(!window.drag_mode){
+			toggle_drag_mode();
+		}
+		var html_content = $("#menu").html();
+		console.log(html_content);
+	}
+	
+	function add_tile(){
+		$("#menu").append($(`<input class="tile t2 drag_tile can_drag"></input>`))
+
+		 $('.tile').draggable();
+	}
+
+	$(document).ready(function() {
+		  $('.tile').draggable();
+		  /*
+		  $('#reset').click( function() {
+		    $('.tile').draggable({revert: true
+		      })
+		  })
+		  */
+		  // Draggable does not keep track of original positions!!!
+		  $('#drop').droppable({
+		    drop: function(event, ui) {
+		      droppedObj = ui.draggable.attr('class');
+		      $('.'+droppedObj).fadeOut();
+		    }
+		  })
+		})
+
+
+	</script>
+	<button onclick="add_tile()" style="position: absolute;top: 0; left: 1%">Add</button>
+	<button onclick="toggle_drag_mode()" style="position: absolute;top: 0; left: 5%">Drag Mode</button>
+	<button onclick="save()" style="position: absolute;top: 0; left: 12%">Save</button>
+	<a name="top"></a>
+<div id="container"><!-- container start -->
+  <ul id="menu"><!-- menu start -->
+   <input class="tile t2 drag_tile can_drag"></input>   
+  </ul><!-- menu end -->
+  
+  <div id="reset">Reset</div>
+
+</div><!-- container end -->
+
+</body>
+</html>

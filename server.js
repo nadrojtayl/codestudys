@@ -115,6 +115,10 @@ app.get("/loadhtml",function(req,res){
   res.sendFile(__dirname + "/loadhtml.html");
 })
 
+app.get("/draggable_loadhtml",function(req,res){
+  res.sendFile(__dirname + "/html_dragger.html");
+})
+
 app.get("/reactexample",function(req,res){
   res.sendFile(__dirname + "/reactexample.html");
 })
