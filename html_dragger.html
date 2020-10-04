@@ -210,16 +210,16 @@ a {
 	window.styles_open = false;
 	window.elements_open = false;
 	</script>
-	<button onclick="add_tile()" style="position: absolute;top: 0; left: 1%">Add</button>
-	<button onclick="toggle_drag_mode()" style="position: absolute;top: 0; left: 5%">Drag Mode</button>
-	<button onclick="save()" style="position: absolute;top: 0; left: 12%">Save</button>
+	<button onclick="add_tile()" style="position: absolute;top: 5%; left: 1%">Add</button>
+	<button onclick="toggle_drag_mode()" style="position: absolute;top: 5%; left: 5%">Drag Mode</button>
+	<button onclick="save()" style="position: absolute;top: 5%; left: 12%">Save</button>
 
-	<button onclick="if(!window.elements_open){ window.elements_open = true; window.elements_modal.dialog('open')} else {window.elements_open = false; window.elements_modal.dialog('close')} " style="position: absolute;top: 0; left: 20%">See element list</button>
+	<button onclick="if(!window.elements_open){ window.elements_open = true; window.elements_modal.dialog('open')} else {window.elements_open = false; window.elements_modal.dialog('close')} " style="position: absolute;top: 5%; left: 20%">See element list</button>
 
-	<button onclick="if(!window.styles_open){ window.styles_open = true; window.styles_modal.dialog('open')} else {window.styles_open = false; window.styles_modal.dialog('close')} "  style="position: absolute;top: 0; left: 29%">See style attribute list</button>
+	<button onclick="if(!window.styles_open){ window.styles_open = true; window.styles_modal.dialog('open')} else {window.styles_open = false; window.styles_modal.dialog('close')} "  style="position: absolute;top: 5%; left: 29%">See style attribute list</button>
 
 	<p  id = "web_url" onclick = "if(window.url){window.open(window.url)}"  style="text-decoration-line: underline; color:white; position: absolute;top: -2%; left: 45%"> Visit your website at https://streamedbooks.herokuapp.com/html_examples?example_name=</a>
-		<div style = "background-color: grey; width: 100%; height:5%; position: absolute;top:0; left:0; z-index:-50000"></div>
+		<div style = "background-color: grey; width: 100%; height:5%; position: absolute;top:5%; left:0; z-index:-50000"></div>
 	<a name="top"></a>
 <div id="container"><!-- container start -->
   <ul id="menu"><!-- menu start -->
