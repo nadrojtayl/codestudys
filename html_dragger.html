@@ -519,7 +519,13 @@ if(window.user === undefined){
 				}
 			
 				if(res.data !== "Undefined"){
-					$("#menu").html(res.data);
+					var downloaded = $(res.data);
+					downloaded.each(function(ind,elem){
+						// console.log($(this));
+						// console.log($(this).prop("outerHTML"));
+						$(this).val($(this).prop("outerHTML"));
+					})
+					$("#menu").html(downloaded);
 				}
 		})
 
