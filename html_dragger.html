@@ -138,7 +138,7 @@ a {
 			$('.can_drag').each(function() {
 				// console.log("here");
 	  			// Create a new element and assign it attributes from the current element
-			  var NewElement = $(" <textarea class='tile t2 drag_tile can_drag'></textarea> ");
+			  var NewElement = $(" <textarea style = 'width:15%;height:100px' class='tile t2 drag_tile can_drag'></textarea> ");
 			  console.log(this.attributes)
 			  NewElement.val($(this).val());
 			  NewElement.css("top", $(this).css("top"));
@@ -186,7 +186,12 @@ a {
 	}
 	
 	function add_tile(){
-		$("#menu").append($(`<textarea class="tile t2 drag_tile can_drag"></textarea>`))
+		$("#menu").append($(`
+			<div>
+				<textarea style = "width:15%;height:100px" class="tile t2 drag_tile can_drag">Write html here!</textarea>
+			</div>
+			`
+			))
 
 		 $('.tile').draggable();
 	}
@@ -212,8 +217,8 @@ a {
 	window.elements_open = false;
 	</script>
 	<button onclick="add_tile()" style="position: absolute;top: 1.0%; left: 1%">Add</button>
-	<button onclick="toggle_drag_mode()" style="position: absolute;top: 1.0%; left: 5%">Drag Mode</button>
-	<button onclick="save()" style="position: absolute;top: 1.0%; left: 12%">Save</button>
+	<button onclick="toggle_drag_mode()" style="position: absolute;top: 1.0%; left: 5%">Switch Mode</button>
+	<button onclick="save()" style="position: absolute;top: 1.0%; left: 14%">Save</button>
 
 	<button onclick="if(!window.elements_open){ window.elements_open = true; window.elements_modal.dialog('open')} else {window.elements_open = false; window.elements_modal.dialog('close')} " style="position: absolute;top: 1.0%; left: 20%">See element list</button>
 
