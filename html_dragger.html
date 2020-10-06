@@ -14,6 +14,15 @@ Colors:
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+textarea {
+    height:100%;
+    background-color:beige;
+    width:100%;
+    resize:none; border:none;
+    padding:0px; margin:0px;
+    
+}
+div { padding:0px; }
 
 h1 {
   color: #666;
@@ -105,13 +114,14 @@ a {
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	window.drag_mode = false;
+	window.tiles = [];
 	function toggle_drag_mode(){
 		if(!window.drag_mode){
-			$('.tile').each(function() {
+			$('.divaroundtextarea').each(function() {
 				console.log("here");
 	  			// Create a new element and assign it attributes from the current element
 			  
-			  var potential_html = $(this).val();
+			  var potential_html = $(this).children("textarea").val();
 			  // alert(/<\/?[a-z][\s\S]*>/i.test(potential_html));
 			  if(! /<\/?[a-z][\s\S]*>/i.test(potential_html)){
 			  	potential_html = "<p>Not valid html!</p>"
@@ -121,26 +131,54 @@ a {
 
 			 
 
-			  NewElement.val($(this).val());
-			  NewElement.addClass("can_drag")
+			  NewElement.val(potential_html);
+			  NewElement.addClass("produced_element")
+			  console.log($(this).css("top"))
+			  console.log($(this).css("left"))
+			  NewElement.css("position", "absolute");
 			  NewElement.css("top", $(this).css("top"));
 			  NewElement.css("left", $(this).css("left"));
+			  console.log(NewElement)
 
-
+// 
 			  // Replace the current element with the new one and carry over the contents
 			  $(this).replaceWith(NewElement);
 
 			});
-			$('.can_drag').draggable();
+			// $('.can_drag').draggable();
 			window.drag_mode = true;
 		} else{
 			// alert("MROEN")
-			$('.can_drag').each(function() {
+			$('.produced_element').each(function(ind,elem) {
 				// console.log("here");
 	  			// Create a new element and assign it attributes from the current element
-			  var NewElement = $(" <textarea style = 'width:15%;height:100px' class='tile t2 drag_tile can_drag'></textarea> ");
+	  			var new_offset = {top:30, left:40};
+	  			var id = 'textarea' + ind;
+	  			var new_width = 200;
+				var new_height = 150;
+			  var NewElement = $(" <div class = 'divaroundtextarea'><textarea class = 'editabletextarea' id='"+id+"'></textarea> </div>").width(new_width)
+						   			.height(new_height).draggable({
+                                        cancel: "text",
+                                        start: function (){
+                                        	console.log(id);
+                                        	console.log($(id));
+                                            $("#"+id).focus();
+                                         },
+                                        stop: function (){
+                                            $("#"+id).focus();
+                                         } 
+                                     })
+                                    .resizable().css({
+											'position'	        : 'absolute',
+											'background-color'  : 'yellow',
+											'border-color'      : 'black',
+											'border-width'      : '1px',
+											'border-style'	    : 'solid'
+								     })
+									 .offset(new_offset)
+
 			  console.log(this.attributes)
-			  NewElement.val($(this).val());
+			  NewElement.children("textarea").val($(this).val());
 			  NewElement.css("top", $(this).css("top"));
 			  NewElement.css("left", $(this).css("left"));
 
@@ -186,14 +224,36 @@ a {
 	}
 	
 	function add_tile(){
-		$("#menu").append($(`
-			<div>
-				<textarea style = "width:15%;height:100px" class="tile t2 drag_tile can_drag">Write html here!</textarea>
-			</div>
-			`
-			))
+			
 
-		 $('.tile').draggable();
+			 var new_offset = {top:30, left:40};
+	var new_width = 200;
+	var new_height = 150;
+	window.tiles.push(1);
+	var i = window.tiles.length;
+	var newElement$ = $('<div class = "divaroundtextarea"><textarea class = "editabletextarea" id="textarea'+window.tiles.length+'"></textarea></div>').width(new_width)
+						   			.height(new_height)
+                                    .draggable({
+                                        cancel: "text",
+                                        start: function (){
+                                            $("#textarea" + i).focus();
+                                         },
+                                        stop: function (){
+                                            $("#textarea" + i).focus();
+                                         } 
+                                     })
+                                    .resizable()
+									.css({
+											'position'	        : 'absolute',
+											'background-color'  : 'yellow',
+											'border-color'      : 'black',
+											'border-width'      : '1px',
+											'border-style'	    : 'solid'
+								     })
+									 .offset(new_offset)
+						             .appendTo('#menu');
+            
+		 // $('.tile').draggable();
 	}
 
 	$(document).ready(function() {
