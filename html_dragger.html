@@ -156,7 +156,12 @@ a {
 	  			var id = 'textarea' + ind;
 	  			var new_width = 200;
 				var new_height = 150;
-			  var NewElement = $(" <div class = 'divaroundtextarea'><p style = 'position:absolute;top:0;right:0' onclick = '$(this).parent().remove()'>X</p><textarea class = 'editabletextarea' id='"+id+"'></textarea> </div>").width(new_width)
+			  var NewElement = $(`<div class = 'divaroundtextarea'>
+			  	<p style = 'position:absolute;top:0;right:0' onclick = '$(this).parent().remove()'>X</p>
+			  	<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button onclick="autofill(1)" style= "background-color: rgb(255,255,254); color: rgb(31,162,67); position: absolute;top: 11%;left:45%; width:5%; z-index: 1000;">Autofill</button>")'>F</p>
+			  	<textarea class = 'editabletextarea' id='"+id+"'></textarea> 
+
+			  	</div>`).width(new_width)
 						   			.height(new_height).draggable({
                                         cancel: "text",
                                         start: function (){
@@ -231,7 +236,11 @@ a {
 	var new_height = 150;
 	window.tiles.push(1);
 	var i = window.tiles.length;
-	var newElement$ = $('<div class = "divaroundtextarea"><p style = "position:absolute;top:0;right:0" onclick = "$(this).parent().remove()">X</p><textarea class = "editabletextarea" id="textarea'+window.tiles.length+'"></textarea></div>').width(new_width)
+	var newElement$ = $(`<div class = "divaroundtextarea">
+		<p style = "position:absolute;top:0;right:0" onclick = "$(this).parent().remove()">X</p>
+		<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button onclick="autofill(1)" style= "background-color: rgb(255,255,254); color: rgb(31,162,67); position: absolute;top: 11%;left:45%; width:5%; z-index: 1000;">Autofill</button>")'>F</p>
+		<textarea class = "editabletextarea" id="textarea'+window.tiles.length+'"></textarea></div>
+		`).width(new_width)
 						   			.height(new_height)
                                     .draggable({
                                         cancel: "text",
