@@ -158,7 +158,6 @@ a {
 				var new_height = 150;
 			  var NewElement = $(`<div class = 'divaroundtextarea'>
 			  	<p style = 'position:absolute;top:0;right:0' onclick = '$(this).parent().remove()'>X</p>
-			  	<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button style= 'background-color: white; color: red; font-size:24px">Example</button>")'>F</p>
 			  	<textarea class = 'editabletextarea' id='"+id+"'></textarea> 
 
 			  	</div>`).width(new_width)
@@ -238,7 +237,6 @@ a {
 	var i = window.tiles.length;
 	var newElement$ = $(`<div class = "divaroundtextarea">
 		<p style = "position:absolute;top:0;right:0" onclick = "$(this).parent().remove()">X</p>
-		<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button style= 'background-color: white; color: red; font-size:24px">Example</button>")'>F</p>
 		<textarea class = "editabletextarea" id="textarea'+window.tiles.length+'"></textarea></div>
 		`).width(new_width)
 						   			.height(new_height)
