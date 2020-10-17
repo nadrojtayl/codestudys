@@ -158,7 +158,7 @@ a {
 				var new_height = 150;
 			  var NewElement = $(`<div class = 'divaroundtextarea'>
 			  	<p style = 'position:absolute;top:0;right:0' onclick = '$(this).parent().remove()'>X</p>
-			  	<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button onclick="autofill(1)" style= "background-color: rgb(255,255,254); color: rgb(31,162,67); position: absolute;top: 11%;left:45%; width:5%; z-index: 1000;">Autofill</button>")'>F</p>
+			  	<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button style= 'background-color: white; color: red;">Example</button>")'>F</p>
 			  	<textarea class = 'editabletextarea' id='"+id+"'></textarea> 
 
 			  	</div>`).width(new_width)
@@ -238,7 +238,7 @@ a {
 	var i = window.tiles.length;
 	var newElement$ = $(`<div class = "divaroundtextarea">
 		<p style = "position:absolute;top:0;right:0" onclick = "$(this).parent().remove()">X</p>
-		<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button onclick="autofill(1)" style= "background-color: rgb(255,255,254); color: rgb(31,162,67); position: absolute;top: 11%;left:45%; width:5%; z-index: 1000;">Autofill</button>")'>F</p>
+		<p style = 'position:absolute;top:0;right:5%' onclick = '$(this).parent().setValue("<button style= 'background-color: white; color: red;">Example</button>")'>F</p>
 		<textarea class = "editabletextarea" id="textarea'+window.tiles.length+'"></textarea></div>
 		`).width(new_width)
 						   			.height(new_height)
