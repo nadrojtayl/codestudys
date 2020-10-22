@@ -300,6 +300,10 @@ io.on('connection', function(socket){
 
 });
 
+app.get("/manage_sheets",function(req,res){
+  res.send(__dirname + "/manage_sheets.html")
+})
+
 http.listen(process.env.PORT || 5000, function(){
   console.log('listening on *:5000');
 });

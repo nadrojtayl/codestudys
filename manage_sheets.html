@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function load_sheet(){
+			var sheet = prompt("Whats your sheet name? Enter the word new if you want to make a new sheet")
+			if(sheet.trim() === "new" || sheet.trim() === "New"){
+				var name = prompt("What name do you want to give your sheet?");
+				if(name === "" || name.length < 4 || name === undefined){
+					alert("Please enter a name longer than 4 characters ")
+					return
+				}
+			axios.post('https://still-sierra-15379.herokuapp.com/newDoc', {
+			    name
+			  })
+			  .then(function (response) {
+			  	// alert(JSON.stringify(response))
+			    if(response.data.status === "Success"){
+			    	alert("All Set!" + response.data.url);
+			    	window.location = response.data.url;
+			    } else {
+			    	alert("That name is already taken!")
+			    	load_sheet();
+			    }
+			  })
+			  .catch(function (error) {
+			  	alert("Our servers are having an error. Youll have to make the sheet yourself, sorry.")
+			    console.log(error);
+			  });
+			} else {
+				// alert(name);
+				// alert(name.length);
+				if(sheet === "" || sheet.length < 4 || sheet === undefined){
+					alert("Please enter a name longer than 4 characters ")
+					return
+				}
+
+			axios.post('https://still-sierra-15379.herokuapp.com/loadDoc', {
+			    name:sheet
+			  })
+			  .then(function (response) {
+			  	// alert(JSON.stringify(response));
+			    if(response.data.status === "Success"){
+			    	alert("All Set!" + response.data.url);
+			    	window.location = response.data.url;
+			    } else {
+			    	alert("We didn't find that!")
+			    	load_sheet();
+			    }
+			  })
+			  .catch(function (error) {
+			  	alert("Our servers are having an error. Try again later, sorry.")
+			    console.log(error);
+			  });
+			}
+		}
+
+		load_sheet()
+	</script>
+</body>
+</html>
