@@ -23,12 +23,12 @@
 				return;
 			}
 			
-			axios.post('https://streamedbooks.herokuapp.com/html_examples', {
+			axios.post('https://streamedbook.herokuapp.com/html_examples', {
 			  name: window.name,
 			  html: $("#html").text()
 			}).then(function(res){
 				if(res.data === "Saved"){
-					$("#complete_message").empty().text("OK! You can view your website at https://streamedbooks.herokuapp.com/html_examples?example_name=" + window.name);
+					$("#complete_message").empty().text("OK! You can view your website at https://streamedbook.herokuapp.com/html_examples?example_name=" + window.name);
 					$("#completion-dialog").dialog("open");
 				} else {
 					alert ("There was a problem! Reload the page and try again!")
