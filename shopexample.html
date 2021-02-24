@@ -253,7 +253,10 @@ jQuery.fn.getAllcss = (function(css2) {
 			window.money_rise_rate = 5;
 
 			if($("body").find("img").length === 0){
-				$("#system_message").empty().text("People want to see a picture of your pizza to compare to other pizza");
+				$("#system_message").empty().append(
+
+					$(`<p onclick = "window.open('https://vimeo.com/516088353')">People want to see a picture of your pizza to compare to other pizza. Click here to learn how to add images in html!</p>`)
+				);
 				return;
 			}
 			window.money_rise_rate = 8;
