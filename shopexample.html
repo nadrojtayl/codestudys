@@ -110,7 +110,7 @@
 		}
 	</script>
 	<button
-	onclick = "$('.pizzagame').toggle(); $('#code').css('margin-top', ($('#code').css('margin-top') !== '0px') ? '0px': '20%')"
+	onclick = "$('.pizzagame').toggle(); $('#code').css('margin-top', ($('#code').css('margin-top') !== '0px') ? '0px': '10%')"
 
 	 style = "position: absolute; top:10%; left:78%;" onclick=""
 
@@ -217,10 +217,11 @@ jQuery.fn.getAllcss = (function(css2) {
     };
 })(jQuery.fn.css);
 
-		function render(){
+		function render(e){
+		console.log(e.target.value)
 
 		var functions = getFromBetween.get($("#code").text(),"{{","}}")
-		var input = $("#code").find(".ace_line").text()
+		var input = editor.getValue();
 		var i = -1;
 		while(input.indexOf("{{") !== -1 && input.indexOf("}}") !== -1){
 			i++;
