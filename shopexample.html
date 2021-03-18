@@ -58,7 +58,7 @@
 	    
 	  </div>
   <div class = "pizzagame" style = "position: absolute; left:25%; top:0%; display:none; background-color:blue; width:50%; color:white; font-weight:bold;font-size:16px;" id = "system_dialog">
-		<p id = "system_message">You need to do more!</p>
+		<p  class = "pizzagame" id = "system_message">You need to do more!</p>
 	</div>
 	<script type="text/javascript">
 		 function getQueryVariable(variable){
@@ -110,11 +110,11 @@
 		}
 	</script>
 	<button
-	onclick = "save()"
+	onclick = "$('.pizzagame').toggle(); $('#code').css('margin-top', ($('#code').css('margin-top') !== '0px') ? '0px': '20%')"
 
 	 style = "position: absolute; top:10%; left:78%;" onclick=""
 
-	 >Turn Off Pizza Game</button>
+	 >Toggle Pizza Game</button>
 	<button
 	onclick = "save()"
 
@@ -136,7 +136,7 @@
 	</div>
 	<p class = "pizzagame">Write your website code here</p>
 	<div>
-		<p style = "border:solid black 1px; border-radius:5px;height: 100px; width:100%;" id = "code" contenteditable="true"></p>
+		<p style = "border:solid black 1px; border-radius:5px;height: 100px; width:100%; margin-top:0px;" id = "code" contenteditable="true"></p>
 	</div>
 	
 
