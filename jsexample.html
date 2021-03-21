@@ -623,7 +623,7 @@ function next_level(){
 		console.log()
 		$("#goal_div").empty().text(window.levels[window.level].goal);	
 
-    $("#completion_percentage").empty().append(Math.round(window.level/8*100) + "% done" );
+    $("#completion_percentage").empty().append(Math.round(window.level/8*100));
     alert(window.student_name)
     if(window.student_name !== undefined){
        axios.post('https://streamedbook.herokuapp.com/alter_user',{
