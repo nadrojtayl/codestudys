@@ -517,7 +517,7 @@ button:hover {
 					$("#completion_percentage").attr("data-progress",res.data.results[0].html_button_progress)
 				}
 			}).catch(function(e){
-				console.log("There's been an error. Try again later." + e);
+				$("#completion_percentage").attr("data-progress",0)
 			})
 
 	</script>
@@ -670,7 +670,8 @@ function next_level(){
 		} catch(e){
 			console.log(e);
 		}
-		$("#completion_percentage").empty().append(Math.round(window.level/8*100) + "% done" );
+		
+    $("#completion_percentage").attr("data-progress",Math.round(window.level/8*100))
 
 		if(window.student_name !== undefined){
 		   axios.post('https://streamedbook.herokuapp.com/alter_user',{
