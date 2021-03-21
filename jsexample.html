@@ -503,6 +503,7 @@ button:hover {
           $("#completion_percentage").attr("data-progress",res.data.results[0].js_button_progress)
         }
       }).catch(function(e){
+        $("#completion_percentage").attr("data-progress",0)
         console.log("There's been an error. Try again later." + e);
       })
 
