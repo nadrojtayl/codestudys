@@ -501,6 +501,8 @@ button:hover {
       // console.log(res.data.results[0]);
         if(res.data.results[0].js_button_progress !== undefined && res.data.results[0].js_button_progress !== null){
           $("#completion_percentage").attr("data-progress",res.data.results[0].js_button_progress)
+        } else {
+           $("#completion_percentage").attr("data-progress",0)
         }
       }).catch(function(e){
         $("#completion_percentage").attr("data-progress",0)
@@ -623,7 +625,7 @@ function next_level(){
 		console.log()
 		$("#goal_div").empty().text(window.levels[window.level].goal);	
 
-    $("#completion_percentage").empty().append(Math.round(window.level/8*100));
+    $("#completion_percentage").attr("data-progress",Math.round(window.level/8*100))
     alert(window.student_name)
     if(window.student_name !== undefined){
        axios.post('https://streamedbook.herokuapp.com/alter_user',{
