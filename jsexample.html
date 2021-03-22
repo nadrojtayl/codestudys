@@ -484,6 +484,7 @@ button:hover {
 </head>
 <body class="tile is-parent" style = " align-items: space-around; display: flex; white-space: pre-wrap; height: 1600px; background-color: white;">
   <script type="text/javascript">
+    window.level = 0;
     function getQueryVariable(variable){
            var query = window.location.search.substring(1);
            var vars = query.split("&");
@@ -501,11 +502,17 @@ button:hover {
       // console.log(res.data.results[0]);
         if(res.data.results[0].js_button_progress !== undefined && res.data.results[0].js_button_progress !== null){
           $("#completion_percentage").attr("data-progress",res.data.results[0].js_button_progress)
+          var percentage = res.data.results[0].html_button_progress
+          var level = Math.floor(percentage/100*8);
+          window.level = level;
+          to_level()
         } else {
            $("#completion_percentage").attr("data-progress",0)
+           window.level = 0;
         }
       }).catch(function(e){
         $("#completion_percentage").attr("data-progress",0)
+        window.level = 0;
         console.log("There's been an error. Try again later." + e);
       })
 
@@ -573,7 +580,7 @@ I'M A BUTTON
 
 	</div>
 	<script type="text/javascript">
-		window.level = 0;
+		
 		// Get the modal
 var modal = document.getElementById("myModal");
 
@@ -613,6 +620,35 @@ function check(){
 
 	
 	return output;
+}
+
+
+function to_level(){
+  
+    if(window.levels[window.level].after !== undefined){
+      window.levels[window.level].after();
+    }
+    $("#input_div").empty().text(window.levels[window.level].code);
+    console.log()
+    $("#goal_div").empty().text(window.levels[window.level].goal);  
+
+    $("#completion_percentage").attr("data-progress",Math.round(window.level/8*100))
+   
+    if(window.student_name !== undefined){
+       axios.post('https://streamedbook.herokuapp.com/alter_user',{
+        username:window.student_name,change_obj:{js_button_progress: Math.round(window.level/8 * 100) }
+       })
+       .then(function(res){
+     
+        console.log(res.data);
+      }).catch(function(e){
+        alert(e);
+        console.log("There's been an error. Try again later." + e);
+      })
+
+    }
+
+
 }
 
 function next_level(){
