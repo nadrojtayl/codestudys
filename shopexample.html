@@ -72,6 +72,7 @@
 
 		   window.getQueryVariable = getQueryVariable;
 		   window.student_name = getQueryVariable("student_name");
+		   window.assignment = getQueryVariable("assignment");
 
 			function save(){
 				try{
@@ -109,6 +110,22 @@
 			})
 		}
 	</script>
+	<button
+	onclick = "
+	if(window.assignment === undefined){alert('You are not logged in!')}
+	if(window.assignment !== undefined){
+		if(parseInt($('#money_amount').text()) > 300 ){
+			window.parent.postMessage('completed','*')
+		} else {
+			alert('Earn more!')
+		}
+	}
+
+	"
+
+	 style = "position: absolute; top:10%; left:70%;" onclick=""
+
+	 >Done/button>
 	<button
 	onclick = "$('.pizzagame').toggle(); $('#code').css('margin-top', ($('#code').css('margin-top') !== '0px') ? '0px': '10%')"
 
