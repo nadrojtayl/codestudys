@@ -14,6 +14,32 @@
   width: 3rem;
   border-width: 1px;
 }
+
+.video-game-button {
+text-shadow: 1px 1px pink, -1px -1px maroon;
+text-align: center;
+display: inline-block;
+-webkit-border-radius: .75em;
+-moz-border-radius: .75em;
+-o-border-radius: .75em;
+border-radius: .75em;
+background-color: red;
+-webkit-box-shadow:  0 .2em maroon;
+-moz-box-shadow:  0 .2em maroon;
+-o-box-shadow:  0 .2em maroon;
+box-shadow:  0 .2em maroon;
+color: red;
+margin: 5px;
+background-color: red;
+background-image: -o-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: -moz-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: -webkit-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+cursor: pointer;
+  padding-left: 5px;
+}
+
+
 .progress-circle:before {
   align-items: center;
   background-color: #fff;
@@ -542,8 +568,7 @@ button:hover {
 	  	<div style = "position: absolute; color:red; top:0;left:0;">
 	        <div id = "completion_percentage"  class="progress-circle" data-progress="50"></div>
 	      </div>
-		<button class = "button1" style="left:50px" onclick="skip_level();" >Skip level</button>
-		<button class = "button1" style="left:60px" id="b2"  onclick="next_level()">Submit Answer</button>
+		<button class = "video-game-button" style="left:60px" id="b2"  onclick="next_level()">Submit Answer</button>
 		<button class = "button1"  style="left:100px; width:190px" onclick="alert('<button></button>\n<p></p>\n<input></input>')">Remind me what tags I can write</button>
 		<p id = "level_counter" style = "position: absolute; top: 0; right:1%; color:white;">Lvl 1/10</p>
 

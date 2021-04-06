@@ -18,6 +18,31 @@
   width: 3rem;
   border-width: 1px;
 }
+
+.video-game-button {
+text-shadow: 1px 1px pink, -1px -1px maroon;
+text-align: center;
+display: inline-block;
+-webkit-border-radius: .75em;
+-moz-border-radius: .75em;
+-o-border-radius: .75em;
+border-radius: .75em;
+background-color: red;
+-webkit-box-shadow:  0 .2em maroon;
+-moz-box-shadow:  0 .2em maroon;
+-o-box-shadow:  0 .2em maroon;
+box-shadow:  0 .2em maroon;
+color: red;
+margin: 5px;
+background-color: red;
+background-image: -o-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: -moz-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: -webkit-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+cursor: pointer;
+  padding-left: 5px;
+}
+
 .progress-circle:before {
   align-items: center;
   background-color: #fff;
@@ -529,7 +554,7 @@ button:hover {
         <div id = "completion_percentage"  class="progress-circle" data-progress="50"></div>
       </div>
       <p></p>
-		<button class = "button1" id="b2" style="width:20%; left:10%" onclick="next_level()">I'm done!</button>
+		<button class = "video-game-button" id="b2" style="width:20%; left:10%" onclick="next_level()">I'm done!</button>
     <button class = "button1" id="b2" style="width:20%; left:10%" onclick="alert('In this activity, you need to alter the code for the button so that when you click the button under MAKE THIS, you see an alert equal to the value in the ALERT THIS box. When they match, you can click next level and move on.')">What am I supposed to do!</button>
 	</div>
 	<section class="section" style = "width: 100%;">
