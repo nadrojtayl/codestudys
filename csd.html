@@ -9,6 +9,34 @@
   crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 	<script type="text/javascript" src="/node_modules/bulma-accordion/dist/js/bulma-accordion.min.js"></script>
+  <style type="text/css">
+    .video-game-button {
+text-shadow: 1px 1px pink, -1px -1px maroon;
+
+line-height: 1.5em;
+text-align: center;
+display: inline-block;
+-webkit-border-radius: .75em;
+-moz-border-radius: .75em;
+-o-border-radius: .75em;
+border-radius: .75em;
+background-color: red;
+-webkit-box-shadow:  0 .2em maroon;
+-moz-box-shadow:  0 .2em maroon;
+-o-box-shadow:  0 .2em maroon;
+box-shadow:  0 .2em maroon;
+color: red;
+margin: 5px;
+background-color: red;
+background-image: -o-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: -moz-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: -webkit-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+background-image: linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+cursor: pointer;
+  padding-left: 5px;
+}
+
+  </style>
 
   <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">window.socket = io();</script>
@@ -176,7 +204,7 @@ body{
   </div>
   <img src = "/csd.png">
  </img>
- <button onclick = "if(prompt('When you go to amazon.com, what happens? A) You download html files from a computer somewhere else, owned by amazon; B) You load a file that your computer already has on it, which was there when your computer was made. C) Your computer reaches out to one big computer, owned by the government, which contains the code for all websites. D) Your computer creates new code to make the website, amazon.com.') === 'A'){alert('Good job'); window.parent.postMessage('completed','*')} else { alert('Not quite...')}" style = "position: absolute;top:75%;left:40%;width:20%;">DONE!</button>
+ <button class = "video-game-button" onclick = "if(prompt('When you go to amazon.com, what happens? A) You download html files from a computer somewhere else, owned by amazon; B) You load a file that your computer already has on it, which was there when your computer was made. C) Your computer reaches out to one big computer, owned by the government, which contains the code for all websites. D) Your computer creates new code to make the website, amazon.com.') === 'A'){alert('Good job'); window.parent.postMessage('completed','*')} else { alert('Not quite...')}" style = "position: absolute;top:75%;left:40%;width:20%;">DONE!</button>
   
 </body>
 </html>
