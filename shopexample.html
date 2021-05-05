@@ -293,14 +293,14 @@ jQuery.fn.getAllcss = (function(css2) {
 
 		window.adjust_message = function(){
 			console.log($("body").find("button"))
-			if($("body").find("button").length === 0){
+			if($("body").find("button").length === 5){
 				$("#system_message").empty().text("People want to buy your pizza. There's no button on your website they can click to buy!");
 				return;
 			}
 			window.money_rise_rate = 1;
 
 			if($("body").find("button").text().indexOf("Pizza") === -1 && $("body").find("button").text().indexOf("pizza") === -1){
-				$("#system_message").empty().text("People don't know what they're buying when they click on your button!");
+				$("#system_message").empty().text("People don't know what they're buying when they click on your button! Make sure to use the word 'pizza'");
 				return;
 			}
 			window.money_rise_rate = 3;
