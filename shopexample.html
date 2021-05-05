@@ -10,6 +10,34 @@
 		  top:0%;
 		}
 	</style>
+	<style type="text/css">
+    .video-game-button {
+    text-shadow: 1px 1px pink, -1px -1px maroon;
+
+    line-height: 1.5em;
+    text-align: center;
+    display: inline-block;
+    -webkit-border-radius: .75em;
+    -moz-border-radius: .75em;
+    -o-border-radius: .75em;
+    border-radius: .75em;
+    background-color: red;
+    -webkit-box-shadow:  0 .2em maroon;
+    -moz-box-shadow:  0 .2em maroon;
+    -o-box-shadow:  0 .2em maroon;
+    box-shadow:  0 .2em maroon;
+    color: red;
+    margin: 5px;
+    background-color: red;
+    background-image: -o-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+    background-image: -moz-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+    background-image: -webkit-linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+    background-image: linear-gradient(left top, pink 3%, red 22%, maroon 99%);
+    cursor: pointer;
+      padding-left: 5px;
+    }
+
+  </style>
 	<script src="/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<style type="text/css">
 		.ui-dialog
@@ -73,6 +101,7 @@
 		   window.getQueryVariable = getQueryVariable;
 		   window.student_name = getQueryVariable("student_name");
 		   window.assignment = getQueryVariable("assignment");
+		   window.personal_mode = getQueryVariable("personal_mode");
 
 			function save(){
 				try{
@@ -110,6 +139,8 @@
 			})
 		}
 	</script>
+	
+	
 	<button
 	onclick = "
 	if(window.assignment === undefined){alert('You are not logged in!')}
@@ -123,28 +154,38 @@
 
 	"
 
-	 style = "position: absolute; top:10%; left:70%;" onclick=""
+	class = "video-game-button"
+
+	 style = "position: absolute; top:9%; left:61%;" onclick=""
 
 	 >Done</button>
+	 <button
+	onclick = "
+	window.open('https://vimeo.com/545355826')
+	"
+
+	 style = "position: absolute; top:10%; left:66%;" onclick=""
+
+	 >How to add images</button>
 	<button
 	onclick = "$('.pizzagame').toggle(); $('#code').css('margin-top', ($('#code').css('margin-top') !== '0px') ? '0px': '10%')"
 
 	 style = "position: absolute; top:10%; left:78%;" onclick=""
 
-	 >Toggle Pizza Game</button>
+	 >Toggle Game</button>
 	<button
 	onclick = "save()"
 
-	 style = "position: absolute; top:10%; left:90%;" onclick=""
+	 style = "position: absolute; top:10%; left:87%;" onclick=""
 
 	 >Save</button>
 	 <button
 	onclick = "window.open('https://streamedbook.herokuapp.com/html_examples?example_name=' + window.student_name)"
 
-	 style = "position: absolute; top:10%; left:95%;" onclick=""
+	 style = "position: absolute; top:10%; left:92%;" onclick=""
 
 	 >View</button>
-	<p class = "pizzagame" style = "padding-top: 50px;">Your Mission: Make The Best Pizza Shop Website</p>
+	<p class = "pizzagame" id = "top_message" style = "padding-top: 50px;">Your Mission: Make The Best Pizza Shop Website</p>
 	<script type="text/javascript">
 		window.money_rise_rate = 0;
 	</script>
@@ -313,6 +354,15 @@ jQuery.fn.getAllcss = (function(css2) {
 		 }, 5000);
 
 		 $("#code").on("input",render)
+
+
+		 if(window.personal_mode){
+		 	$('.pizzagame').toggle(); $('#code').css('margin-top', ($('#code').css('margin-top') !== '0px') ? '0px': '10%')
+		 	$("#top_message").toggle();
+		 	$("#top_message").css("padding-top","50px");
+		 	$('#code').css('margin-top',"0px")
+		 	$("#top_message").empty().append("Your Mission: Turn your pizza website into a website about you!")
+		 }
 	</script>
 </body>
 </html>
