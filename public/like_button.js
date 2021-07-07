@@ -271,6 +271,17 @@ var AutoHelp = function (_Component) {
                 }, className: '_3d primary', style: { backgroundColor: "orange" } },
               'Make it wider'
             ),
+            React.createElement(
+            'button',
+            { className: '_3d primary', style: { backgroundColor: "silver", float: "left", width: "33%", borderRadius: "5px", color: "black" }, onClick: function onClick() {
+              setTimeout(function(){
+                window.$("#auto_help_container").hide();
+              },500)
+              
+                    
+                  } },
+            'Exit'
+          ),
             element === "image" ? React.createElement(
               'button',
               { className: '_3d primary' },
@@ -305,7 +316,18 @@ var AutoHelp = function (_Component) {
                 element
               );
             })
-          )
+          ),
+          React.createElement(
+            'button',
+            { className: '_3d primary', style: { backgroundColor: "silver", float: "left", width: "33%", borderRadius: "5px", color: "black" }, onClick: function onClick() {
+              setTimeout(function(){
+                window.$("#auto_help_container").hide();
+              },500)
+              
+                    
+                  } },
+            'Exit'
+          ),
         );
       } else {
         var content = React.createElement('img', { 'class': 'draggable', id: 'elements_img', style: { height: "100%", width: "100%", display:"none" }, src: '/htmlguide.png' });
