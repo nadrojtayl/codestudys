@@ -10,6 +10,8 @@
 		  top:0%;
 		}
 	</style>
+	<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 	<style type="text/css">
     .video-game-button {
     text-shadow: 1px 1px pink, -1px -1px maroon;
@@ -201,6 +203,27 @@
 	<div style = "background-color:  white; border: solid #232757 3px; border-radius: 10px; height: 400px;" id = "output_div">
 	</div>
 	<script type="text/javascript">
+		function splitHTML( text) {
+    var parts = [];
+    var div = document.createElement('DIV');
+    div.innerHTML = text;
+    div.normalize();
+    for( var node = div.firstChild; node; node=node.nextSibling) {
+         if( node.nodeType == Node.TEXT_NODE) {
+             parts.push.apply( parts, node.textContent.split(" "));
+         }
+         else if( node.nodeType == Node.ELEMENT_NODE) {
+             parts.push( node.outerHTML);
+         }
+    }
+    return parts;
+}
+
+
+
+window.splitHTML = splitHTML;
+	</script>
+	<script type="text/javascript">
 
 	var editor = ace.edit("code");
 	window.editor = editor;
@@ -364,5 +387,8 @@ jQuery.fn.getAllcss = (function(css2) {
 		 	$("#top_message").empty().append("Your Mission: Turn your pizza website into a website about you!")
 		 }
 	</script>
+	<div class = "draggable" id="auto_help_container" style = "width: 35%; display:none; height: 20%;top:43%;left:60.6%;position: absolute; z-index: 500;" >
+  </div>
+	<script type = "module" src="like_button.js"></script>
 </body>
 </html>
